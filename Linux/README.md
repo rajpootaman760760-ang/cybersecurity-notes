@@ -285,3 +285,126 @@ Example:
 ```bash
 vim script.py
 ```
+# 🔍 Searching Inside Files
+
+Searching Inside Files is an essential Linux skill that helps you quickly find specific words or text within files and directories. The `grep` command is the most commonly used tool for this purpose. Below are the basic `grep` commands with simple Hinglish explanations and examples.
+
+---
+
+# 1. grep
+
+## Command
+
+```bash
+grep "Linux" notes.txt
+```
+
+### Hinglish Explanation
+
+`grep` command ka use file ke andar kisi specific word ya text ko search karne ke liye hota hai. Agar word mil jata hai to us line ko terminal par show karta hai.
+
+### Example
+
+```bash
+grep "Linux" notes.txt
+```
+
+---
+
+# 2. grep -i
+
+## Command
+
+```bash
+grep -i "linux" notes.txt
+```
+
+### Hinglish Explanation
+
+`-i` option uppercase aur lowercase letters ka difference ignore karta hai. Matlab `Linux`, `LINUX`, aur `linux` sabhi ko search karega.
+
+### Example
+
+```bash
+grep -i "linux" notes.txt
+```
+
+---
+
+# 3. grep -n
+
+## Command
+
+```bash
+grep -n "Linux" notes.txt
+```
+
+### Hinglish Explanation
+
+`-n` option matching line ke saath uska line number bhi show karta hai.
+
+### Example
+
+```bash
+grep -n "Linux" notes.txt
+```
+
+---
+
+# 4. grep -c
+
+## Command
+
+```bash
+grep -c "Linux" notes.txt
+```
+
+### Hinglish Explanation
+
+`-c` option batata hai ki search kiya gaya word kitni lines me mila hai.
+
+### Example
+
+```bash
+grep -c "Linux" notes.txt
+```
+
+---
+
+# 5. grep -v
+
+## Command
+
+```bash
+grep -v "Linux" notes.txt
+```
+
+### Hinglish Explanation
+
+`-v` option un lines ko show karta hai jisme search kiya gaya word nahi hota.
+
+### Example
+
+```bash
+grep -v "Linux" notes.txt
+```
+
+---
+
+# 6. grep -r
+
+## Command
+
+```bash
+grep -r "Linux" .
+```
+
+### Hinglish Explanation
+
+`-r` option current directory aur uske andar maujood sabhi folders aur files me recursively search karta hai.
+
+### Example
+
+```bash
+grep -r "Linux" .
+```
