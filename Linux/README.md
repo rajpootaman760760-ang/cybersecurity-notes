@@ -1,105 +1,86 @@
-# Kali Linux Commands
+# Kali Linux Notes
 
-## 1. pwd
+## 📁 Navigation Commands
 
-**Explanation:**  
-Current directory ka path dikhata hai. Matlab abhi terminal me tum kis folder ke andar ho, ye batata hai.
+### pwd
+Current working directory ka path dikhata hai.
 
-**Syntax**
 ```bash
 pwd
 ```
 
-**Example**
+Example:
 ```bash
 pwd
-```
-
-**Output**
-```bash
+# Output:
 /home/kali/Documents
 ```
 
 ---
 
-## 2. ls
+### ls
+Current folder ke andar ki files aur folders dikhata hai.
 
-**Explanation:**  
-Current folder ke andar jitni files aur folders hain, unki list dikhata hai.
-
-**Syntax**
 ```bash
 ls
 ```
 
-**Example**
+Example:
 ```bash
 ls
-```
-
-**Output**
-```bash
-Desktop  Documents  Downloads  notes.txt
+# Output:
+Desktop Documents Downloads
 ```
 
 ---
 
-## 3. ls -l
+### ls -l
+Files aur folders ki detailed information dikhata hai.
 
-**Explanation:**  
-Files aur folders ki detailed information dikhata hai jaise permissions, owner, size aur date.
-
-**Syntax**
 ```bash
 ls -l
 ```
 
-**Example**
+Example:
 ```bash
 ls -l
 ```
 
 ---
 
-## 4. ls -a
+### ls -a
+Hidden files aur folders dikhata hai.
 
-**Explanation:**  
-Hidden files aur folders bhi dikhata hai (jo dot `.` se start hote hain).
-
-**Syntax**
 ```bash
 ls -a
 ```
 
-**Example**
+Example:
 ```bash
 ls -a
 ```
 
 ---
 
-## 5. cd
+### cd
+Ek folder se dusre folder me jane ke liye.
 
-**Explanation:**  
-Ek folder se dusre folder me jane ke liye use hota hai.
-
-**Syntax**
-```bash
-cd folder_name
-```
-
-**Example**
 ```bash
 cd Documents
 ```
 
-Pichle folder me jane ke liye
+Example:
+```bash
+cd Downloads
+```
+
+Go Back:
 
 ```bash
 cd ..
 ```
 
-Home directory me jane ke liye
+Go Home:
 
 ```bash
 cd ~
@@ -107,56 +88,49 @@ cd ~
 
 ---
 
-## 6. mkdir
+## 📂 File & Folder Operations
 
-**Explanation:**  
-Naya folder banane ke liye use hota hai.
+### mkdir
+Naya folder create karta hai.
 
-**Syntax**
-```bash
-mkdir folder_name
-```
-
-**Example**
 ```bash
 mkdir Projects
 ```
 
----
-
-## 7. touch
-
-**Explanation:**  
-Nayi empty file create karne ke liye use hota hai.
-
-**Syntax**
+Example:
 ```bash
-touch file_name
+mkdir Notes
 ```
 
-**Example**
+---
+
+### touch
+Nayi empty file create karta hai.
+
 ```bash
 touch notes.txt
 ```
 
----
-
-## 8. cp
-
-**Explanation:**  
-File ya folder ki copy banane ke liye use hota hai.
-
-**Syntax**
+Example:
 ```bash
-cp source destination
+touch demo.py
 ```
 
-**Example**
+---
+
+### cp
+File ya folder copy karta hai.
+
 ```bash
 cp notes.txt backup.txt
 ```
 
-Folder copy karne ke liye
+Example:
+```bash
+cp report.txt Documents/
+```
+
+Folder Copy:
 
 ```bash
 cp -r Notes Backup
@@ -164,44 +138,33 @@ cp -r Notes Backup
 
 ---
 
-## 9. mv
+### mv
+File move ya rename karta hai.
 
-**Explanation:**  
-File ko move ya rename karne ke liye use hota hai.
-
-**Syntax**
 ```bash
-mv source destination
+mv notes.txt Documents/
 ```
 
-**Example (Rename)**
+Example:
 ```bash
-mv notes.txt linux_notes.txt
-```
-
-**Example (Move)**
-```bash
-mv linux_notes.txt Documents/
+mv old.txt new.txt
 ```
 
 ---
 
-## 10. rm
+### rm
+File ya folder delete karta hai.
 
-**Explanation:**  
-File ya folder delete karne ke liye use hota hai.
-
-**Syntax**
-```bash
-rm file_name
-```
-
-**Example**
 ```bash
 rm notes.txt
 ```
 
-Folder delete karne ke liye
+Example:
+```bash
+rm demo.py
+```
+
+Folder Delete:
 
 ```bash
 rm -r Notes
@@ -209,68 +172,116 @@ rm -r Notes
 
 ---
 
-## 11. rmdir
+### rmdir
+Empty folder delete karta hai.
 
-**Explanation:**  
-Sirf empty folder delete karta hai.
-
-**Syntax**
-```bash
-rmdir folder_name
-```
-
-**Example**
 ```bash
 rmdir Test
 ```
 
----
-
-## 12. cat
-
-**Explanation:**  
-File ke andar ka content terminal me dikhata hai.
-
-**Syntax**
+Example:
 ```bash
-cat file_name
+rmdir EmptyFolder
 ```
 
-**Example**
+---
+
+## 📖 Viewing File Contents
+
+### cat
+File ka pura content terminal me dikhata hai.
+
 ```bash
 cat notes.txt
 ```
 
----
-
-## 13. less
-
-**Explanation:**  
-Badi file ko page by page dekhne ke liye use hota hai.
-
-**Syntax**
+Example:
 ```bash
-less file_name
+cat passwords.txt
 ```
 
-**Example**
+---
+
+### less
+Badi file ko page by page dekhne ke liye.
+
 ```bash
 less log.txt
 ```
 
----
-
-## 14. more
-
-**Explanation:**  
-File ko ek-ek page me dekhne ke liye use hota hai.
-
-**Syntax**
+Example:
 ```bash
-more file_name
+less notes.txt
 ```
 
-**Example**
+---
+
+### head
+File ki pehli 10 lines dikhata hai.
+
 ```bash
-more notes.txt
+head notes.txt
+```
+
+Example:
+```bash
+head -5 notes.txt
+```
+
+---
+
+### tail
+File ki last 10 lines dikhata hai.
+
+```bash
+tail notes.txt
+```
+
+Example:
+```bash
+tail -5 notes.txt
+```
+
+---
+
+### tail -f
+File me real-time changes monitor karta hai.
+
+```bash
+tail -f server.log
+```
+
+Example:
+```bash
+tail -f access.log
+```
+
+---
+
+## ✍️ Text Editors
+
+### nano
+Simple text editor.
+
+```bash
+nano notes.txt
+```
+
+Example:
+```bash
+nano test.py
+```
+
+---
+
+### vim
+Advanced text editor.
+
+```bash
+vim notes.txt
+```
+
+Example:
+```bash
+vim script.py
 ```
