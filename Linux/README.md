@@ -408,3 +408,128 @@ grep -r "Linux" .
 ```bash
 grep -r "Linux" .
 ```
+# ⌨️ Terminal Shortcuts
+
+Terminal shortcuts help you work faster and more efficiently in Kali Linux. Instead of typing extra commands, you can use keyboard shortcuts to complete commands, stop running processes, clear the terminal, access previous commands, and view command documentation.
+
+---
+
+# 1. Tab
+
+## Shortcut
+
+```text
+Tab
+```
+
+### Hinglish Explanation
+
+`Tab` key ka use command ya file/folder ka naam automatically complete (Auto-complete) karne ke liye hota hai. Isse typing fast hoti hai aur spelling mistakes bhi kam hoti hain.
+
+### Example
+
+```bash
+cd Doc
+```
+
+Press **Tab**
+
+```bash
+cd Documents/
+```
+
+---
+
+# 2. Ctrl + C
+
+## Shortcut
+
+```text
+Ctrl + C
+```
+
+### Hinglish Explanation
+
+`Ctrl + C` ka use terminal me chal rahi command ya process ko turant stop (Interrupt) karne ke liye hota hai.
+
+### Example
+
+```bash
+ping google.com
+```
+
+Press **Ctrl + C** to stop the command.
+
+---
+
+# 3. Ctrl + L
+
+## Shortcut
+
+```text
+Ctrl + L
+```
+
+### Hinglish Explanation
+
+`Ctrl + L` terminal screen ko clear kar deta hai. Ye `clear` command ke jaisa hi kaam karta hai.
+
+### Example
+
+```text
+Press Ctrl + L
+```
+
+Terminal screen clean ho jayegi.
+
+---
+
+# 4. Up Arrow (↑)
+
+## Shortcut
+
+```text
+↑ (Up Arrow)
+```
+
+### Hinglish Explanation
+
+`Up Arrow` key ka use pehle chalayi gayi commands ko dobara dekhne aur use karne ke liye hota hai.
+
+### Example
+
+```bash
+ls
+pwd
+date
+```
+
+Press **↑** to display the previous commands.
+
+---
+
+# 5. man
+
+## Command
+
+```bash
+man command
+```
+
+### Hinglish Explanation
+
+`man` (Manual) command kisi bhi Linux command ki complete documentation aur usage dikhata hai.
+
+### Example
+
+```bash
+man ls
+```
+
+Ya
+
+```bash
+man grep
+```
+
+Exit karne ke liye **q** press karein.
