@@ -697,3 +697,132 @@ cat /etc/passwd
 ```bash
 sudo cat /etc/shadow
 ```
+# 👤 Key User Commands
+
+Linux provides several user management commands to identify users, switch users, run administrative tasks, and manage passwords. Below are the most commonly used user commands with simple Hinglish explanations and examples.
+
+---
+
+# 1. whoami
+
+## Command
+
+```bash
+whoami
+```
+
+### Hinglish Explanation
+
+`whoami` command current logged-in user ka username dikhati hai.
+
+### Example
+
+```bash
+whoami
+```
+
+Output:
+
+```text
+aman
+```
+
+---
+
+# 2. id
+
+## Command
+
+```bash
+id
+```
+
+### Hinglish Explanation
+
+`id` command current user ka User ID (UID), Group ID (GID), aur jis groups ka user member hai, unki information dikhati hai.
+
+### Example
+
+```bash
+id
+```
+
+Output:
+
+```text
+uid=1000(aman) gid=1000(aman) groups=1000(aman),27(sudo)
+```
+
+---
+
+# 3. sudo
+
+## Command
+
+```bash
+sudo command
+```
+
+### Hinglish Explanation
+
+`sudo` command kisi bhi command ko Root (Administrator) permission ke saath run karne ke liye use hoti hai.
+
+### Example
+
+```bash
+sudo apt update
+```
+
+---
+
+# 4. su
+
+## Command
+
+```bash
+su username
+```
+
+### Hinglish Explanation
+
+`su` (Switch User) command ek user se dusre user par switch karne ke liye use hoti hai. Root user par switch karne ke liye `su root` ya `sudo su` use kiya jata hai.
+
+### Example
+
+```bash
+su root
+```
+
+Ya
+
+```bash
+sudo su
+```
+
+---
+
+# 5. passwd
+
+## Command
+
+```bash
+passwd
+```
+
+### Hinglish Explanation
+
+`passwd` command current user ka password change karne ke liye use hoti hai. Agar kisi dusre user ka password change karna ho to Root permission ki zarurat hoti hai.
+
+### Example
+
+Current user ka password change karna:
+
+```bash
+passwd
+```
+
+Kisi dusre user ka password change karna:
+
+```bash
+sudo passwd aman
+```
