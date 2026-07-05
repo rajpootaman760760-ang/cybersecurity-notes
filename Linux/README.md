@@ -826,3 +826,123 @@ Kisi dusre user ka password change karna:
 ```bash
 sudo passwd aman
 ```
+# 👥 Adding & Managing Users
+
+Linux allows you to create, manage, and remove user accounts using different commands. These commands are commonly used by system administrators to manage users and their permissions.
+
+---
+
+# 1. adduser
+
+## Command
+
+```bash
+sudo adduser john
+```
+
+### Hinglish Explanation
+
+`adduser` command ka use system me naya user create karne ke liye hota hai. Ye interactive command hai, isliye username, password aur baaki information puchti hai.
+
+### Example
+
+```bash
+sudo adduser aman
+```
+
+---
+
+# 2. passwd
+
+## Command
+
+```bash
+sudo passwd john
+```
+
+### Hinglish Explanation
+
+`passwd` command kisi user ka password set ya change karne ke liye use hoti hai.
+
+### Example
+
+```bash
+sudo passwd aman
+```
+
+---
+
+# 3. usermod -aG sudo
+
+## Command
+
+```bash
+sudo usermod -aG sudo john
+```
+
+### Hinglish Explanation
+
+`usermod -aG sudo` command kisi user ko **sudo group** me add karti hai, jisse user administrator (Root) permissions ke saath commands run kar sakta hai.
+
+- `-a` = Add
+- `-G` = Group
+
+### Example
+
+```bash
+sudo usermod -aG sudo aman
+```
+
+---
+
+# 4. deluser
+
+## Command
+
+```bash
+sudo deluser john
+```
+
+### Hinglish Explanation
+
+`deluser` command system se user account ko delete karne ke liye use hoti hai. Ye sirf user account remove karti hai, home directory by default delete nahi hoti.
+
+### Example
+
+```bash
+sudo deluser aman
+```
+
+Agar home directory bhi delete karni ho:
+
+```bash
+sudo deluser --remove-home aman
+```
+
+---
+
+# 5. cat /etc/passwd
+
+## Command
+
+```bash
+cat /etc/passwd
+```
+
+### Hinglish Explanation
+
+`/etc/passwd` file system ke sabhi users ki basic information store karti hai. Is command se system me maujood sabhi user accounts ki list dekh sakte ho.
+
+### Example
+
+```bash
+cat /etc/passwd
+```
+
+Output:
+
+```text
+root:x:0:0:root:/root:/bin/bash
+aman:x:1000:1000::/home/aman:/bin/bash
+john:x:1001:1001::/home/john:/bin/bash
+```
