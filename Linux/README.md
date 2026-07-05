@@ -533,3 +533,167 @@ man grep
 ```
 
 Exit karne ke liye **q** press karein.
+
+# 👤 Users in Linux
+
+Linux is a multi-user operating system, which means multiple users can use the same system. Every user has a unique identity called a **User ID (UID)**. Linux uses UIDs to identify users and control permissions.
+
+---
+
+# 1. User ID (UID)
+
+## Concept
+
+Every user in Linux has a unique **User ID (UID)**.
+
+### Hinglish Explanation
+
+UID (User ID) ek unique number hota hai jo Linux har user ko assign karta hai. Linux user ko uske naam se nahi, balki uske UID se identify karta hai.
+
+### Example
+
+```bash
+id
+```
+
+Output:
+
+```text
+uid=1000(aman) gid=1000(aman) groups=1000(aman)
+```
+
+---
+
+# 2. Root User (UID = 0)
+
+## Concept
+
+The **root user** always has **UID 0**.
+
+### Hinglish Explanation
+
+Root Linux ka Superuser hota hai. Iske paas system ki sabhi files aur settings ko access aur modify karne ki permission hoti hai.
+
+### Example
+
+```bash
+id root
+```
+
+Output:
+
+```text
+uid=0(root) gid=0(root)
+```
+
+---
+
+# 3. Regular Users (UID 1000+)
+
+## Concept
+
+Regular users usually have **UID 1000 or higher**.
+
+### Hinglish Explanation
+
+Jab naya normal user create hota hai, Linux usko 1000 ya usse bada UID assign karta hai. Ye users limited permissions ke saath kaam karte hain.
+
+### Example
+
+```bash
+id aman
+```
+
+Output:
+
+```text
+uid=1000(aman)
+```
+
+---
+
+# 4. /etc/passwd
+
+## Command
+
+```bash
+cat /etc/passwd
+```
+
+### Hinglish Explanation
+
+`/etc/passwd` file system ke sabhi users ki basic information store karti hai, jaise:
+
+- Username
+- UID
+- GID
+- Home Directory
+- Default Shell
+
+⚠️ Is file me actual password store nahi hota.
+
+### Example
+
+```bash
+cat /etc/passwd
+```
+
+Output:
+
+```text
+aman:x:1000:1000::/home/aman:/bin/bash
+```
+
+---
+
+# 5. /etc/shadow
+
+## Command
+
+```bash
+sudo cat /etc/shadow
+```
+
+### Hinglish Explanation
+
+`/etc/shadow` file users ke encrypted (hashed) passwords aur password-related information store karti hai. Is file ko sirf root user ya sudo permission ke saath hi dekha ja sakta hai.
+
+### Example
+
+```bash
+sudo cat /etc/shadow
+```
+
+Output:
+
+```text
+aman:$y$j9T$abc123xyz...:20320:0:99999:7:::
+```
+
+---
+
+# Useful Commands
+
+### Check current user
+
+```bash
+whoami
+```
+
+### Check user information
+
+```bash
+id
+```
+
+### Check all users
+
+```bash
+cat /etc/passwd
+```
+
+### Check password hashes (Root only)
+
+```bash
+sudo cat /etc/shadow
+```
