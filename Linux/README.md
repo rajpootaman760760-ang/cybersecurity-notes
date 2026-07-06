@@ -1054,3 +1054,117 @@ root:x:0:
 sudo:x:27:aman
 developers:x:1001:aman
 ```
+# 👥 Groups in Linux
+
+A **group** in Linux is a collection of users. Groups make it easier to manage file permissions and user access. Instead of assigning permissions to each user individually, you can assign them to a group.
+
+---
+
+# 1. groupadd
+
+## Command
+
+```bash
+sudo groupadd developers
+```
+
+### Hinglish Explanation
+
+`groupadd` command ka use Linux me naya group create karne ke liye hota hai.
+
+### Example
+
+```bash
+sudo groupadd developers
+```
+
+Verify karne ke liye:
+
+```bash
+cat /etc/group
+```
+
+---
+
+# 2. usermod -aG
+
+## Command
+
+```bash
+sudo usermod -aG developers john
+```
+
+### Hinglish Explanation
+
+`usermod -aG` command kisi existing user ko kisi existing group me add karne ke liye use hoti hai.
+
+- `-a` = Append (existing groups ko remove nahi karta)
+- `-G` = Secondary Group
+
+⚠️ Agar `-a` option use nahi karoge, to user apne baaki groups se remove ho sakta hai.
+
+### Example
+
+```bash
+sudo usermod -aG developers aman
+```
+
+Verify karne ke liye:
+
+```bash
+groups aman
+```
+
+---
+
+# 3. groups
+
+## Command
+
+```bash
+groups john
+```
+
+### Hinglish Explanation
+
+`groups` command kisi user ke sabhi groups ki list dikhati hai.
+
+### Example
+
+```bash
+groups aman
+```
+
+Output:
+
+```text
+aman : aman sudo developers
+```
+
+---
+
+# 4. cat /etc/group
+
+## Command
+
+```bash
+cat /etc/group
+```
+
+### Hinglish Explanation
+
+`/etc/group` file system ke sabhi groups ki information store karti hai, jaise Group Name, Group ID (GID), aur group ke members. Is command se system me available sabhi groups ki list dekh sakte ho.
+
+### Example
+
+```bash
+cat /etc/group
+```
+
+Output:
+
+```text
+root:x:0:
+sudo:x:27:aman
+developers:x:1001:aman
+```
