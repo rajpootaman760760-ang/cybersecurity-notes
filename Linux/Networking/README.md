@@ -271,3 +271,174 @@ Describes how data flows inside the network.
 - Tree is suitable for large organizations.
 - Hybrid combines multiple topologies for flexibility.
 - Physical topology differs from logical topology.
+
+# Client-Server and Peer-to-Peer (P2P) Architecture
+
+## Introduction
+
+A network architecture defines how devices communicate and share resources within a network.
+
+The two most common network architectures are:
+
+- Client-Server Architecture
+- Peer-to-Peer (P2P) Architecture
+
+Understanding these models is important because almost every modern network is built using one of them.
+
+---
+
+# 1. Client-Server Architecture
+
+In a Client-Server network, one device acts as the **Server**, while other devices act as **Clients**.
+
+The client requests services or resources, and the server processes the request and sends the response.
+
+Example:
+
+```
+Client --------\
+Client ---------> Server
+Client --------/
+```
+
+Examples:
+
+- Web Browsing
+- Email Services
+- Cloud Storage
+- Online Banking
+
+---
+
+## Characteristics
+
+- Centralized management
+- Better security
+- Easy backup
+- Easy maintenance
+- Suitable for medium and large organizations
+
+---
+
+## Advantages
+
+- Centralized data storage
+- Strong security
+- Easy administration
+- Better performance
+- Scalable
+
+---
+
+## Disadvantages
+
+- Server failure can affect all clients.
+- Higher implementation cost.
+- Requires dedicated server hardware.
+
+---
+
+# 2. Peer-to-Peer (P2P) Architecture
+
+In a Peer-to-Peer network, every computer can act as both a client and a server.
+
+There is no dedicated central server.
+
+Example:
+
+```
+PC A ------ PC B
+ |            |
+ |            |
+PC C ------ PC D
+```
+
+Each computer shares its own resources directly.
+
+---
+
+## Characteristics
+
+- No dedicated server
+- Equal privileges for all devices
+- Direct communication
+- Easy setup
+
+---
+
+## Advantages
+
+- Low cost
+- Simple configuration
+- No dedicated server required
+- Suitable for small networks
+
+---
+
+## Disadvantages
+
+- Weak security
+- Difficult management
+- Poor scalability
+- No centralized backup
+
+---
+
+# Client-Server vs Peer-to-Peer
+
+| Feature | Client-Server | Peer-to-Peer |
+|----------|--------------|--------------|
+| Server | Dedicated | No Dedicated Server |
+| Management | Centralized | Decentralized |
+| Security | High | Low |
+| Cost | High | Low |
+| Scalability | Excellent | Limited |
+| Performance | Better | Depends on Peers |
+| Backup | Centralized | Individual |
+
+---
+
+# Real-World Examples
+
+### Client-Server
+
+- Google Search
+- Gmail
+- Facebook
+- Netflix
+- Online Banking
+
+### Peer-to-Peer
+
+- BitTorrent
+- Local File Sharing
+- Small Home Networks
+
+---
+
+# Cyber Security Perspective
+
+### Client-Server
+
+Advantages:
+- Centralized authentication
+- Better access control
+- Easier monitoring
+- Security policies can be applied from one place
+
+### Peer-to-Peer
+
+Challenges:
+- Harder to monitor
+- Difficult to enforce security policies
+- Greater risk of malware spreading between peers
+
+---
+
+# Key Takeaways
+
+- Client-Server uses a dedicated server to provide services.
+- Peer-to-Peer allows devices to communicate directly.
+- Client-Server offers better security and scalability.
+- P2P is cheaper but harder to manage.
+- Most enterprise networks use the Client-Server model.
