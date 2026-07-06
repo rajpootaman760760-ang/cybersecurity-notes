@@ -442,3 +442,247 @@ Challenges:
 - Client-Server offers better security and scalability.
 - P2P is cheaper but harder to manage.
 - Most enterprise networks use the Client-Server model.
+
+- # 🫠OSI Model (Open Systems Interconnection Model)
+
+## Introduction
+
+The **OSI (Open Systems Interconnection) Model** is a **conceptual reference model** that explains how data travels from one device to another over a network.
+
+It divides the entire communication process into **7 layers**, where each layer performs a specific task. This layered approach makes networking easier to understand, design, and troubleshoot.
+
+> **Note:** The OSI Model is **not a protocol**. It is a reference model used to understand how network communication works.
+
+---
+
+# Why Do We Need the OSI Model?
+
+Imagine a user says:
+
+> "The internet is not working."
+
+The problem could be related to:
+- A damaged network cable
+- An incorrect IP address
+- A switch failure
+- A router issue
+- A DNS problem
+- An application error
+
+Without a standard model, finding the exact issue would be difficult.
+
+The OSI Model helps engineers troubleshoot problems layer by layer.
+
+---
+
+# The 7 Layers of the OSI Model
+
+| Layer | Name | Main Function |
+|-------|----------------|-------------------------------|
+| 7 | Application | Provides network services to applications |
+| 6 | Presentation | Data formatting, encryption, compression |
+| 5 | Session | Establishes, manages, and terminates sessions |
+| 4 | Transport | Reliable data delivery and error recovery |
+| 3 | Network | Logical addressing and routing |
+| 2 | Data Link | Physical addressing (MAC) and frame delivery |
+| 1 | Physical | Transmits raw bits over the physical medium |
+
+---
+
+# Data Flow in the OSI Model
+
+## Sender Side (Encapsulation)
+
+```
+Application
+      ↓
+Presentation
+      ↓
+Session
+      ↓
+Transport
+      ↓
+Network
+      ↓
+Data Link
+      ↓
+Physical
+```
+
+The sender adds protocol information at each layer before transmitting the data.
+
+This process is called **Encapsulation**.
+
+---
+
+## Receiver Side (Decapsulation)
+
+```
+Physical
+     ↑
+Data Link
+     ↑
+Network
+     ↑
+Transport
+     ↑
+Session
+     ↑
+Presentation
+     ↑
+Application
+```
+
+Each layer removes its corresponding header and passes the data to the next layer.
+
+This process is called **Decapsulation**.
+
+---
+
+# Layer 7 – Application Layer
+
+The Application Layer is the closest layer to the user.
+
+It provides network services that applications use to communicate over the network.
+
+### Examples
+
+- Web Browser
+- Email Client
+- WhatsApp
+- FTP Client
+
+### Common Protocols
+
+- HTTP
+- HTTPS
+- FTP
+- SMTP
+- DNS
+
+---
+
+# Layer 6 – Presentation Layer
+
+The Presentation Layer is responsible for preparing data before it reaches the application.
+
+### Functions
+
+- Data Formatting
+- Encryption
+- Decryption
+- Compression
+- Decompression
+
+---
+
+# Layer 5 – Session Layer
+
+The Session Layer establishes, manages, and terminates communication sessions between devices.
+
+### Functions
+
+- Session Establishment
+- Session Maintenance
+- Session Termination
+- Synchronization
+
+---
+
+# Layer 4 – Transport Layer
+
+The Transport Layer provides end-to-end communication between devices.
+
+### Functions
+
+- Segmentation
+- Error Detection
+- Reliable Data Delivery
+- Flow Control
+
+### Common Protocols
+
+- TCP
+- UDP
+
+---
+
+# Layer 3 – Network Layer
+
+The Network Layer determines the best path for packets to travel between networks.
+
+### Functions
+
+- Logical Addressing
+- Routing
+- Packet Forwarding
+
+### Device
+
+- Router
+
+### Common Protocol
+
+- IP (IPv4 / IPv6)
+
+---
+
+# Layer 2 – Data Link Layer
+
+The Data Link Layer is responsible for communication within the same local network.
+
+### Functions
+
+- MAC Addressing
+- Framing
+- Error Detection
+- Switching
+
+### Device
+
+- Switch
+
+---
+
+# Layer 1 – Physical Layer
+
+The Physical Layer transmits raw binary data over the physical medium.
+
+### Functions
+
+- Signal Transmission
+- Electrical Signals
+- Optical Signals
+- Radio Signals
+
+### Examples
+
+- Ethernet Cable
+- Fiber Optic Cable
+- Wi-Fi Signals
+- Network Connectors
+
+---
+
+# Memory Trick
+
+From Layer 7 to Layer 1:
+
+**All People Seem To Need Data Processing**
+
+---
+
+# Key Takeaways
+
+- The OSI Model is a conceptual reference model.
+- It consists of **7 layers**.
+- Each layer has a specific responsibility.
+- Data moves from Layer 7 to Layer 1 during transmission (**Encapsulation**).
+- Data moves from Layer 1 to Layer 7 at the receiving side (**Decapsulation**).
+- The OSI Model simplifies networking and troubleshooting.
+
+---
+
+# Summary
+
+The OSI Model provides a standardized framework for understanding network communication. By dividing communication into seven independent layers, it becomes easier to design networks, troubleshoot problems, and understand how protocols and networking devices interact.
