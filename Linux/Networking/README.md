@@ -12,7 +12,7 @@ Converts domain names into IP addresses.
 ## DHCP
 Automatically assigns IP addresses.
 
-## TYPES OF NETWORKA
+## TYPES OF NETWORK
 PAN (Personal Area Network)
 LAN (Local Area Network)
 CAN (Campus Area Network)
