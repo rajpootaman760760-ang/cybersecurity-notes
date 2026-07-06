@@ -139,3 +139,135 @@ Goodput represents only the useful payload.
 - Latency measures delay.
 - Jitter measures delay variation.
 - Packet loss indicates failed delivery.
+
+# Network Topologies
+
+## Introduction
+
+A Network Topology defines how devices are physically or logically connected in a network.
+
+Choosing the correct topology affects performance, reliability, scalability, and maintenance.
+
+---
+
+# 1. Bus Topology
+
+All devices are connected to a single backbone cable.
+
+Advantages:
+- Simple
+- Low Cost
+
+Disadvantages:
+- Backbone failure stops the entire network.
+- Difficult troubleshooting.
+
+---
+
+# 2. Star Topology
+
+All devices connect to a central switch or hub.
+
+Advantages:
+- Easy management
+- Easy troubleshooting
+- High performance
+
+Disadvantages:
+- Switch failure affects the entire network.
+
+Most modern LANs use Star Topology.
+
+---
+
+# 3. Ring Topology
+
+Each device connects to exactly two neighboring devices, forming a circular path.
+
+Advantages:
+- Predictable performance
+
+Disadvantages:
+- A single cable failure can disrupt communication unless redundancy exists.
+
+---
+
+# 4. Mesh Topology
+
+Each device is connected to multiple devices.
+
+Types:
+- Full Mesh
+- Partial Mesh
+
+Advantages:
+- High Availability
+- Excellent Fault Tolerance
+
+Disadvantages:
+- Expensive
+- Complex Cabling
+
+Used in:
+- ISP Networks
+- WAN Infrastructure
+
+---
+
+# 5. Tree Topology
+
+A hierarchical combination of multiple Star Networks.
+
+Advantages:
+- Highly Scalable
+- Easy Expansion
+
+Disadvantages:
+- Backbone failure affects multiple branches.
+
+---
+
+# 6. Hybrid Topology
+
+A combination of two or more topologies.
+
+Example:
+- Star + Mesh
+- Star + Bus
+
+Used in:
+- Enterprise Networks
+- Data Centers
+
+---
+
+# Physical vs Logical Topology
+
+Physical Topology:
+Describes how devices are physically connected.
+
+Logical Topology:
+Describes how data flows inside the network.
+
+---
+
+# Comparison
+
+| Topology | Cost | Reliability | Scalability |
+|-----------|------|------------|-------------|
+| Bus | Low | Low | Low |
+| Star | Medium | High | High |
+| Ring | Medium | Medium | Medium |
+| Mesh | High | Very High | Medium |
+| Tree | Medium | High | High |
+| Hybrid | High | Very High | Very High |
+
+---
+
+# Key Takeaways
+
+- Star Topology is the most commonly used LAN topology.
+- Mesh provides maximum redundancy.
+- Tree is suitable for large organizations.
+- Hybrid combines multiple topologies for flexibility.
+- Physical topology differs from logical topology.
