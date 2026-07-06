@@ -13,8 +13,12 @@ Converts domain names into IP addresses.
 Automatically assigns IP addresses.
 
 ## TYPES OF NETWORK
--PAN (Personal Area Network)
+ PAN (Personal Area Network) 
+ 
+ CAN (Campus Area Network)
+ 
 -LAN (Local Area Network)
--Network)
+ 
 -MAN (Metropolitan Area Network)
+
 -WAN (Wide Area Network)
