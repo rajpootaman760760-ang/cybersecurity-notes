@@ -927,3 +927,245 @@ Hello
 # Summary
 
 Encapsulation is the process of adding protocol headers as data travels down the OSI layers, while Decapsulation is the process of removing those headers at the receiving device to recover the original data. These two processes form the foundation of network communication.
+
+# TCP/IP Model
+
+## Introduction
+
+The **TCP/IP (Transmission Control Protocol / Internet Protocol) Model** is the standard networking model used on the Internet.
+
+Unlike the OSI Model, which is a conceptual reference model, the TCP/IP Model is a practical model that defines how devices communicate over real networks.
+
+Almost every modern network, including the Internet, uses the TCP/IP Model.
+
+---
+
+# Why Do We Need the TCP/IP Model?
+
+When data is transmitted across a network, different tasks need to be performed, such as:
+
+- Creating data
+- Establishing communication
+- Routing packets
+- Delivering data over the physical network
+
+The TCP/IP Model divides these responsibilities into **4 layers**, making communication efficient and standardized.
+
+---
+
+# Layers of the TCP/IP Model
+
+| Layer | Function |
+|---------|----------------------------------------|
+| Application | Provides network services to applications |
+| Transport | End-to-end communication |
+| Internet | Logical addressing and routing |
+| Network Access | Physical transmission and local communication |
+
+---
+
+# TCP/IP Communication Process
+
+```
+Application Layer
+        │
+        ▼
+Transport Layer
+        │
+        ▼
+Internet Layer
+        │
+        ▼
+Network Access Layer
+        │
+        ▼
+Physical Network
+```
+
+---
+
+# 1. Application Layer
+
+The Application Layer is the top layer of the TCP/IP Model.
+
+It provides services that allow applications to communicate over the network.
+
+### Functions
+
+- Web browsing
+- Email
+- File transfer
+- Domain name resolution
+
+### Common Protocols
+
+- HTTP
+- HTTPS
+- FTP
+- SMTP
+- POP3
+- IMAP
+- DNS
+- DHCP
+
+---
+
+# 2. Transport Layer
+
+The Transport Layer provides end-to-end communication between devices.
+
+It ensures that data reaches the correct application.
+
+### Functions
+
+- Segmentation
+- Error detection
+- Flow control
+- Reliable communication
+- Port numbers
+
+### Protocols
+
+## TCP (Transmission Control Protocol)
+
+Features:
+
+- Connection-oriented
+- Reliable
+- Error checking
+- Ordered delivery
+- Retransmission
+
+Used for:
+
+- Web browsing
+- Email
+- File transfer
+
+---
+
+## UDP (User Datagram Protocol)
+
+Features:
+
+- Connectionless
+- Faster
+- No guarantee of delivery
+- Lower overhead
+
+Used for:
+
+- Video streaming
+- Online gaming
+- VoIP
+- DNS
+
+---
+
+# 3. Internet Layer
+
+The Internet Layer is responsible for moving packets between different networks.
+
+### Functions
+
+- Logical addressing
+- Routing
+- Packet forwarding
+
+### Protocols
+
+- IPv4
+- IPv6
+- ICMP
+- ARP
+
+---
+
+# 4. Network Access Layer
+
+The Network Access Layer is responsible for transmitting data over the physical network.
+
+### Functions
+
+- MAC Addressing
+- Framing
+- Physical transmission
+- Error detection
+
+### Technologies
+
+- Ethernet
+- Wi-Fi
+- Fiber Optic
+
+---
+
+# Data Encapsulation
+
+As data moves down the TCP/IP Model:
+
+```
+Data
+   ↓
+Segment
+   ↓
+Packet
+   ↓
+Frame
+   ↓
+Bits
+```
+
+At the receiving side, the reverse process takes place.
+
+---
+
+# TCP/IP vs OSI Model
+
+| OSI Model | TCP/IP Model |
+|------------|--------------|
+| 7 Layers | 4 Layers |
+| Reference Model | Practical Model |
+| Mostly Educational | Used in Real Networks |
+| More Detailed | Simpler |
+
+---
+
+# Layer Mapping
+
+| OSI Layer | TCP/IP Layer |
+|------------|--------------|
+| Application | Application |
+| Presentation | Application |
+| Session | Application |
+| Transport | Transport |
+| Network | Internet |
+| Data Link | Network Access |
+| Physical | Network Access |
+
+---
+
+# Advantages
+
+- Simple architecture
+- Highly scalable
+- Widely supported
+- Used by the Internet
+- Supports different hardware and operating systems
+
+---
+
+# Key Takeaways
+
+- TCP/IP is the networking model used by the Internet.
+- It contains 4 layers.
+- TCP provides reliable communication.
+- UDP provides faster communication with less overhead.
+- IP is responsible for logical addressing and routing.
+- The Network Access Layer handles physical communication.
+
+---
+
+# Summary
+
+The TCP/IP Model is the foundation of modern networking. It defines how data is transmitted between devices using four layers. Every Internet service, from web browsing to email and cloud computing, relies on the TCP/IP Model for communication.
