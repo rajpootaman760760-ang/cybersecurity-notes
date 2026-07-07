@@ -686,3 +686,244 @@ From Layer 7 to Layer 1:
 # Summary
 
 The OSI Model provides a standardized framework for understanding network communication. By dividing communication into seven independent layers, it becomes easier to design networks, troubleshoot problems, and understand how protocols and networking devices interact.
+
+# Encapsulation and Decapsulation
+
+## Introduction
+
+When data is transmitted from one device to another, it passes through different layers of the OSI Model.
+
+During transmission, each layer adds its own information to the data. This process is called **Encapsulation**.
+
+At the receiving device, each layer removes its own information. This process is called **Decapsulation**.
+
+---
+
+# What is Encapsulation?
+
+**Encapsulation** is the process of adding protocol information (headers and sometimes trailers) to data as it moves from the **Application Layer** to the **Physical Layer**.
+
+Each layer adds its own header to help the receiving device understand and process the data correctly.
+
+---
+
+# Encapsulation Process
+
+```
+Application Layer
+        │
+        ▼
+      Data
+        │
+        ▼
+Presentation Layer
+        │
+        ▼
+Session Layer
+        │
+        ▼
+Transport Layer
++----------------------+
+| TCP/UDP Header |
++----------------------+
+        │
+        ▼
+Network Layer
++----------------------+
+| IP Header |
++----------------------+
+        │
+        ▼
+Data Link Layer
++----------------------+
+| MAC Header |
+|      Data            |
+| MAC Trailer |
++----------------------+
+        │
+        ▼
+Physical Layer
+        │
+        ▼
+Binary Bits (0s and 1s)
+```
+
+---
+
+# Protocol Data Units (PDU)
+
+As data moves through different layers, its name changes.
+
+| Layer | PDU Name |
+|--------|----------|
+| Application | Data |
+| Presentation | Data |
+| Session | Data |
+| Transport | Segment (TCP) / Datagram (UDP) |
+| Network | Packet |
+| Data Link | Frame |
+| Physical | Bits |
+
+---
+
+# Encapsulation Example
+
+Suppose you send a message:
+
+```
+Hello
+```
+
+### Step 1
+
+Application Layer creates the data.
+
+```
+Data
+```
+
+---
+
+### Step 2
+
+Transport Layer adds a TCP header.
+
+```
+TCP Header + Data
+```
+
+---
+
+### Step 3
+
+Network Layer adds an IP header.
+
+```
+IP Header + TCP Header + Data
+```
+
+---
+
+### Step 4
+
+Data Link Layer adds a MAC header and trailer.
+
+```
+MAC Header + IP Header + TCP Header + Data + Trailer
+```
+
+---
+
+### Step 5
+
+Physical Layer converts everything into binary bits.
+
+```
+010101010101...
+```
+
+These bits are transmitted over the network.
+
+---
+
+# What is Decapsulation?
+
+**Decapsulation** is the reverse process of Encapsulation.
+
+The receiving device removes headers layer by layer until the original data reaches the application.
+
+---
+
+# Decapsulation Process
+
+```
+Bits
+   │
+   ▼
+Physical Layer
+   │
+   ▼
+Frame
+(Remove MAC Header/Trailer)
+   │
+   ▼
+Packet
+(Remove IP Header)
+   │
+   ▼
+Segment
+(Remove TCP/UDP Header)
+   │
+   ▼
+Data
+   │
+   ▼
+Application
+```
+
+---
+
+# Example
+
+Sender sends:
+
+```
+Hello
+```
+
+During transmission:
+
+```
+MAC Header
+IP Header
+TCP Header
+Hello
+Trailer
+```
+
+Receiver removes them one by one:
+
+```
+Remove MAC Header
+↓
+Remove IP Header
+↓
+Remove TCP Header
+↓
+Original Message:
+Hello
+```
+
+---
+
+# Why is Encapsulation Important?
+
+- Enables communication between different devices.
+- Provides logical and physical addressing.
+- Supports routing and switching.
+- Ensures reliable data delivery.
+- Makes troubleshooting easier.
+
+---
+
+# Why is Decapsulation Important?
+
+- Removes unnecessary protocol information.
+- Restores the original data.
+- Delivers the data to the correct application.
+
+---
+
+# Key Takeaways
+
+- Encapsulation occurs on the sender side.
+- Decapsulation occurs on the receiver side.
+- Every layer adds or removes protocol information.
+- The data changes from **Data → Segment → Packet → Frame → Bits** during transmission.
+- The reverse process occurs at the receiving device.
+
+---
+
+# Summary
+
+Encapsulation is the process of adding protocol headers as data travels down the OSI layers, while Decapsulation is the process of removing those headers at the receiving device to recover the original data. These two processes form the foundation of network communication.
