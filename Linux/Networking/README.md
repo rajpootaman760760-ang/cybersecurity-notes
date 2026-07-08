@@ -1169,3 +1169,271 @@ At the receiving side, the reverse process takes place.
 # Summary
 
 The TCP/IP Model is the foundation of modern networking. It defines how data is transmitted between devices using four layers. Every Internet service, from web browsing to email and cloud computing, relies on the TCP/IP Model for communication.
+
+# Ethernet Frame & MAC Address
+
+## Introduction
+
+Ethernet is the most widely used technology for communication in Local Area Networks (LANs). It defines how devices send and receive data within the same network.
+
+Before data is transmitted over an Ethernet network, it is packed into a structure called an **Ethernet Frame**.
+
+Every device on an Ethernet network is identified using a unique **MAC Address**.
+
+---
+
+# What is Ethernet?
+
+Ethernet is a Layer 2 (Data Link Layer) technology that enables communication between devices connected to the same local network.
+
+Examples:
+
+- Home Wi-Fi Router
+- Office LAN
+- College Computer Lab
+- Data Center Network
+
+---
+
+# What is an Ethernet Frame?
+
+An Ethernet Frame is the format used to transmit data over an Ethernet network.
+
+Think of it like a courier package.
+
+- The package contains your actual item (Data).
+- The label contains sender and receiver information.
+- Similarly, an Ethernet Frame contains data along with addressing information.
+
+---
+
+# Structure of an Ethernet Frame
+
+```
++---------------------------------------------------------------+
+| Destination MAC | Source MAC | Type | Data | FCS |
++---------------------------------------------------------------+
+```
+
+Each field has a specific purpose.
+
+---
+
+# 1. Destination MAC Address
+
+This field contains the MAC Address of the receiving device.
+
+Example:
+
+```
+00:1A:2B:3C:4D:5E
+```
+
+The switch reads this address to decide where to forward the frame.
+
+---
+
+# 2. Source MAC Address
+
+This field contains the MAC Address of the sending device.
+
+Example:
+
+```
+F8:9E:94:AA:11:22
+```
+
+It identifies who sent the frame.
+
+---
+
+# 3. EtherType
+
+This field tells the receiving device which Layer 3 protocol is carried inside the frame.
+
+Common EtherType values:
+
+| EtherType | Protocol |
+|-----------|----------|
+| 0x0800 | IPv4 |
+| 0x86DD | IPv6 |
+| 0x0806 | ARP |
+
+---
+
+# 4. Data (Payload)
+
+This is the actual information being transmitted.
+
+It may contain:
+
+- IP Packet
+- ARP Packet
+- Other Layer 3 Data
+
+---
+
+# 5. Frame Check Sequence (FCS)
+
+The FCS is used for **error detection**.
+
+Before sending a frame, the sender calculates a checksum.
+
+The receiver performs the same calculation.
+
+If both values match:
+
+```
+Frame Accepted
+```
+
+Otherwise:
+
+```
+Frame Discarded
+```
+
+---
+
+# What is a MAC Address?
+
+A MAC (Media Access Control) Address is a unique physical address assigned to every Network Interface Card (NIC).
+
+It is used for communication within the same Local Area Network.
+
+---
+
+# MAC Address Format
+
+Example:
+
+```
+00:1A:2B:3C:4D:5E
+```
+
+A MAC Address consists of:
+
+- 48 bits
+- 6 bytes
+- Written in hexadecimal
+
+---
+
+# MAC Address Structure
+
+```
+00:1A:2B : 3C:4D:5E
+│
+│
+Manufacturer ID (OUI)
+
+Remaining Part
+Unique Device Identifier
+```
+
+The first 24 bits identify the manufacturer.
+
+The last 24 bits uniquely identify the device.
+
+---
+
+# Types of MAC Addresses
+
+## Unicast
+
+One sender → One receiver
+
+Example:
+
+```
+PC A → PC B
+```
+
+---
+
+## Broadcast
+
+One sender → All devices in the LAN
+
+Broadcast MAC:
+
+```
+FF:FF:FF:FF:FF:FF
+```
+
+---
+
+## Multicast
+
+One sender → A selected group of devices.
+
+---
+
+# MAC Address vs IP Address
+
+| MAC Address | IP Address |
+|-------------|------------|
+| Physical Address | Logical Address |
+| Layer 2 | Layer 3 |
+| Permanent (Usually) | Can Change |
+| Used Inside LAN | Used Across Networks |
+
+---
+
+# How a Switch Uses MAC Addresses
+
+Suppose PC A wants to send data to PC B.
+
+```
+PC A
+   │
+   ▼
+Switch
+   │
+   ▼
+PC B
+```
+
+The switch reads the **Destination MAC Address**.
+
+It checks its **MAC Address Table**.
+
+If the MAC exists:
+
+```
+Forward Frame
+```
+
+If not:
+
+```
+Flood Frame
+```
+
+After learning the MAC Address, future communication becomes faster.
+
+---
+
+# Why MAC Addresses are Important?
+
+- Identify devices in a LAN.
+- Enable frame delivery.
+- Used by switches for forwarding.
+- Support reliable local communication.
+
+---
+
+# Key Takeaways
+
+- Ethernet is the most common LAN technology.
+- Data is transmitted using Ethernet Frames.
+- Every Ethernet Frame contains Source MAC and Destination MAC addresses.
+- MAC Address is a unique physical address of a network device.
+- Switches forward frames based on MAC Addresses.
+- FCS is used for error detection.
+
+---
+
+# Summary
+
+Ethernet enables communication within Local Area Networks by transmitting data in the form of Ethernet Frames. Every frame contains source and destination MAC addresses, allowing switches to deliver data to the correct device efficiently.
