@@ -1437,3 +1437,222 @@ After learning the MAC Address, future communication becomes faster.
 # Summary
 
 Ethernet enables communication within Local Area Networks by transmitting data in the form of Ethernet Frames. Every frame contains source and destination MAC addresses, allowing switches to deliver data to the correct device efficiently.
+
+# Switching Logic (How a Network Switch Works)
+
+## Introduction
+
+A network switch is a Layer 2 (Data Link Layer) device that connects multiple devices within a Local Area Network (LAN).
+
+Unlike a hub, a switch does not send data to every connected device. Instead, it intelligently forwards data only to the intended destination using MAC Addresses.
+
+This process is known as **Switching Logic**.
+
+---
+
+# Why Do We Need a Switch?
+
+Imagine four computers connected in a network.
+
+```
+       +-----------+
+PC1 ---|           |
+PC2 ---|  Switch   |
+PC3 ---|           |
+PC4 ---|           |
+       +-----------+
+```
+
+If PC1 wants to send data to PC3, only PC3 should receive the frame.
+
+The switch makes this possible.
+
+---
+
+# MAC Address Table (CAM Table)
+
+Every switch maintains a table called the **MAC Address Table** (also known as the CAM Table).
+
+It stores:
+
+- MAC Address
+- Switch Port
+
+Example:
+
+| MAC Address | Port |
+|-------------|------|
+| AA:AA:AA:AA:AA:AA | Fa0/1 |
+| BB:BB:BB:BB:BB:BB | Fa0/2 |
+| CC:CC:CC:CC:CC:CC | Fa0/3 |
+
+The switch uses this table to decide where to send frames.
+
+---
+
+# Step 1 – Learning
+
+When a frame enters the switch, it first checks the **Source MAC Address**.
+
+Example:
+
+```
+PC1
+MAC = AA:AA:AA:AA:AA:AA
+```
+
+The switch learns:
+
+```
+AA:AA:AA:AA:AA:AA → Port 1
+```
+
+This process is called **MAC Learning**.
+
+---
+
+# Step 2 – Lookup
+
+Now the switch checks the **Destination MAC Address**.
+
+Suppose the destination is:
+
+```
+CC:CC:CC:CC:CC:CC
+```
+
+The switch searches for this MAC Address in its MAC Address Table.
+
+---
+
+# Case 1 – MAC Address Found
+
+If the destination MAC exists:
+
+```
+MAC Found
+      ↓
+Forward Frame
+      ↓
+Correct Port
+```
+
+Only the destination device receives the frame.
+
+This is called **Unicast Forwarding**.
+
+---
+
+# Case 2 – MAC Address Not Found
+
+If the destination MAC is not in the table:
+
+```
+Unknown MAC
+      ↓
+Flood Frame
+```
+
+The switch sends the frame to all ports except the incoming port.
+
+When the destination replies, the switch learns its MAC Address and updates the table.
+
+---
+
+# MAC Learning Example
+
+Initially:
+
+```
+MAC Table = Empty
+```
+
+PC1 sends data.
+
+```
+PC1 → Switch
+```
+
+The switch learns:
+
+```
+AA:AA:AA:AA:AA:AA → Port 1
+```
+
+Later PC2 sends data.
+
+```
+BB:BB:BB:BB:BB:BB → Port 2
+```
+
+Now the table becomes:
+
+| MAC Address | Port |
+|-------------|------|
+| AA:AA:AA:AA:AA:AA | Port 1 |
+| BB:BB:BB:BB:BB:BB | Port 2 |
+
+As more devices communicate, the switch keeps learning.
+
+---
+
+# MAC Aging
+
+Devices may disconnect or change ports.
+
+To keep the table accurate, switches remove old entries after a certain period.
+
+This process is called **MAC Aging**.
+
+---
+
+# Switching Decisions
+
+A switch follows these simple steps:
+
+1. Receive the Ethernet Frame.
+2. Learn the Source MAC Address.
+3. Check the Destination MAC Address.
+4. Search the MAC Address Table.
+5. If found, forward the frame to the correct port.
+6. If not found, flood the frame.
+7. Learn new MAC Addresses from future communication.
+
+---
+
+# Advantages of Switching
+
+- Faster communication
+- Reduced unnecessary traffic
+- Better bandwidth utilization
+- Improved network performance
+- Supports full-duplex communication
+
+---
+
+# Hub vs Switch
+
+| Hub | Switch |
+|------|---------|
+| Layer 1 Device | Layer 2 Device |
+| No MAC Table | Uses MAC Table |
+| Sends data to all ports | Sends data to the correct port |
+| More collisions | Fewer collisions |
+| Lower performance | Better performance |
+
+---
+
+# Key Takeaways
+
+- A switch works at the Data Link Layer (Layer 2).
+- It forwards frames using MAC Addresses.
+- It learns MAC Addresses automatically.
+- It stores MAC Addresses in a MAC Address Table (CAM Table).
+- Unknown MAC Addresses are flooded.
+- Known MAC Addresses are forwarded only to the correct port.
+
+---
+
+# Summary
+
+A network switch intelligently forwards Ethernet frames by learning and storing MAC Addresses in a MAC Address Table. This makes communication faster, reduces unnecessary traffic, and improves the overall efficiency of a Local Area Network.
