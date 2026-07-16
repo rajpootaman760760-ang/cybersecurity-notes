@@ -1311,3 +1311,159 @@ Yahan:
 - `245` → File size (bytes)
 - `Jul 16` → Last modified date
 - `notes.txt` → File name
+
+# 📖 Reading Permission Output
+
+The `ls -l` command displays detailed information about files and directories, including file permissions, owner, group, size, and last modified date. Understanding this output is essential for managing file access in Linux.
+
+---
+
+# Example Output
+
+```text
+-rw-r--r-- 1 root root 1234 Jan 1 file.txt
+```
+
+---
+
+# 1. First Character (File Type)
+
+## Example
+
+```text
+-
+```
+
+### Hinglish Explanation
+
+Permission string ka **pehla character** file ka type batata hai.
+
+| Symbol | Meaning |
+|--------|---------|
+| `-` | Regular File |
+| `d` | Directory |
+| `l` | Symbolic Link |
+
+### Example
+
+```text
+-rw-r--r--
+```
+
+Yeh ek **regular file** hai.
+
+---
+
+# 2. Owner Permissions
+
+## Example
+
+```text
+rw-
+```
+
+### Hinglish Explanation
+
+Agle **3 characters** file ke **Owner** ki permissions batate hain.
+
+- `r` = Read
+- `w` = Write
+- `-` = Execute permission nahi hai
+
+### Meaning
+
+Owner file ko **read aur edit** kar sakta hai, lekin execute nahi kar sakta.
+
+---
+
+# 3. Group Permissions
+
+## Example
+
+```text
+r--
+```
+
+### Hinglish Explanation
+
+Uske baad ke **3 characters** file ke **Group** ki permissions batate hain.
+
+- `r` = Read
+- `-` = Write nahi
+- `-` = Execute nahi
+
+### Meaning
+
+Group members sirf file ko **read** kar sakte hain.
+
+---
+
+# 4. Others Permissions
+
+## Example
+
+```text
+r--
+```
+
+### Hinglish Explanation
+
+Last ke **3 characters** system ke **Other Users** ki permissions batate hain.
+
+- `r` = Read
+- `-` = Write nahi
+- `-` = Execute nahi
+
+### Meaning
+
+Baaki users bhi sirf file ko **read** kar sakte hain.
+
+---
+
+# 5. Complete Breakdown
+
+Example:
+
+```text
+-rw-r--r-- 1 root root 1234 Jan 1 file.txt
+```
+
+| Part | Meaning |
+|------|---------|
+| `-` | Regular File |
+| `rw-` | Owner: Read + Write |
+| `r--` | Group: Read Only |
+| `r--` | Others: Read Only |
+| `1` | Number of Hard Links |
+| `root` | Owner Name |
+| `root` | Group Name |
+| `1234` | File Size (Bytes) |
+| `Jan 1` | Last Modified Date |
+| `file.txt` | File Name |
+
+---
+
+# Useful Command
+
+## Command
+
+```bash
+ls -l
+```
+
+### Hinglish Explanation
+
+`ls -l` command files aur directories ki detailed information dikhati hai, jisme permissions, owner, group, size aur modification date bhi include hoti hai.
+
+### Example
+
+```bash
+ls -l
+```
+
+Output:
+
+```text
+-rw-r--r-- 1 root root 1234 Jan 1 file.txt
+drwxr-xr-x 2 aman developers 4096 Jul 16 Projects
+```
