@@ -1168,3 +1168,146 @@ root:x:0:
 sudo:x:27:aman
 developers:x:1001:aman
 ...........
+# 🔐 Understanding File Permissions
+
+File permissions in Linux determine **who can access a file or directory and what actions they can perform**. Every file and directory has permissions assigned to three different types of users.
+
+---
+
+# 1. Permission Sets
+
+Every file has **three permission sets**:
+
+- **Owner (u)** – The user who owns the file.
+- **Group (g)** – Users who belong to the file's group.
+- **Others (o)** – All other users on the system.
+
+### Hinglish Explanation
+
+Linux me har file ya directory ke permissions **3 categories** me divide hote hain:
+
+- **Owner** → Jis user ne file create ki hai.
+- **Group** → Jis group me file belong karti hai.
+- **Others** → System ke baaki sab users.
+
+---
+
+# 2. Permission Types
+
+There are **three types of permissions**:
+
+| Permission | Symbol | Meaning |
+|------------|--------|---------|
+| Read | `r` | Read/View the file |
+| Write | `w` | Modify or edit the file |
+| Execute | `x` | Run the file as a program |
+
+### Hinglish Explanation
+
+- **Read (r)** → File ko dekh ya padh sakte ho.
+- **Write (w)** → File ko edit ya modify kar sakte ho.
+- **Execute (x)** → File ko program ki tarah run kar sakte ho.
+
+---
+
+# 3. Understanding Permission Format
+
+Example:
+
+```text
+-rwxr-xr--
+```
+
+### Hinglish Explanation
+
+Is permission string ko parts me divide karte hain:
+
+```text
+- rwx r-x r--
+```
+
+- `-` → Ye ek regular file hai.
+- `rwx` → Owner permissions
+- `r-x` → Group permissions
+- `r--` → Others permissions
+
+---
+
+# 4. Permission Breakdown
+
+### Owner → `rwx`
+
+- **r** = Read
+- **w** = Write
+- **x** = Execute
+
+**Meaning:** Owner ke paas full access hai.
+
+---
+
+### Group → `r-x`
+
+- **r** = Read
+- **-** = Write permission nahi hai.
+- **x** = Execute
+
+**Meaning:** Group members file ko read aur execute kar sakte hain, lekin edit nahi kar sakte.
+
+---
+
+### Others → `r--`
+
+- **r** = Read
+- **-** = Write permission nahi hai.
+- **-** = Execute permission nahi hai.
+
+**Meaning:** Baaki users sirf file ko read kar sakte hain.
+
+---
+
+# Example
+
+```text
+-rwxr-xr--
+```
+
+| User | Permissions | Access |
+|------|-------------|--------|
+| Owner | `rwx` | Read, Write, Execute |
+| Group | `r-x` | Read, Execute |
+| Others | `r--` | Read Only |
+
+---
+
+# Useful Command
+
+## Command
+
+```bash
+ls -l
+```
+
+### Hinglish Explanation
+
+`ls -l` command files aur directories ki detailed information dikhati hai, jisme unke permissions bhi include hote hain.
+
+### Example
+
+```bash
+ls -l
+```
+
+Output:
+
+```text
+-rwxr-xr-- 1 aman developers 245 Jul 16 notes.txt
+```
+
+Yahan:
+
+- `-rwxr-xr--` → File permissions
+- `aman` → Owner
+- `developers` → Group
+- `245` → File size (bytes)
+- `Jul 16` → Last modified date
+- `notes.txt` → File name
