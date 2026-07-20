@@ -1656,3 +1656,247 @@ A switch follows these simple steps:
 # Summary
 
 A network switch intelligently forwards Ethernet frames by learning and storing MAC Addresses in a MAC Address Table. This makes communication faster, reduces unnecessary traffic, and improves the overall efficiency of a Local Area Network.
+
+# Spanning Tree Protocol (STP)
+
+## Introduction
+
+In a switched network, connecting multiple switches using redundant links improves reliability. If one link fails, another link can continue carrying traffic.
+
+However, redundant links can also create **network loops**.
+
+To prevent these loops, Ethernet networks use the **Spanning Tree Protocol (STP)**.
+
+STP automatically detects loops and blocks unnecessary paths while keeping them available as backup links.
+
+---
+
+# Why Do We Need STP?
+
+Consider three switches connected together.
+
+```
+        Switch A
+       /        \
+      /          \
+Switch B ------- Switch C
+```
+
+This design provides redundancy because there are multiple paths between the switches.
+
+But if all links remain active, Ethernet frames may circulate forever, creating a switching loop.
+
+---
+
+# Problems Caused by Network Loops
+
+A switching loop can create several serious issues.
+
+### 1. Broadcast Storm
+
+A broadcast frame keeps circulating between switches.
+
+```
+Switch A
+   ↓
+Switch B
+   ↓
+Switch C
+   ↓
+Switch A
+```
+
+The same frame is forwarded repeatedly.
+
+As more frames are generated, network bandwidth becomes fully occupied.
+
+---
+
+### 2. MAC Address Table Instability
+
+A switch continuously learns the same MAC Address from different ports.
+
+Example:
+
+```
+AA:AA:AA → Port 1
+
+After a few milliseconds
+
+AA:AA:AA → Port 2
+```
+
+The MAC Address Table keeps changing, making forwarding unreliable.
+
+---
+
+### 3. Duplicate Frames
+
+The destination device may receive the same frame multiple times.
+
+This can lead to incorrect application behavior and unnecessary traffic.
+
+---
+
+# What is STP?
+
+**Spanning Tree Protocol (STP)** is a Layer 2 protocol defined by **IEEE 802.1D**.
+
+Its purpose is to remove switching loops without removing physical redundancy.
+
+Instead of deleting links, STP places unnecessary links into a **Blocking State**.
+
+If the active link fails, the blocked link automatically becomes active.
+
+---
+
+# How STP Works
+
+STP follows three major steps.
+
+---
+
+## Step 1 – Root Bridge Election
+
+All switches exchange **Bridge Protocol Data Units (BPDUs)**.
+
+The switch with the **lowest Bridge ID (BID)** becomes the **Root Bridge**.
+
+```
+Switch A
+Bridge ID = Lowest
+
+↓
+
+Root Bridge
+```
+
+Every network has only **one Root Bridge**.
+
+---
+
+## Step 2 – Path Selection
+
+Each switch calculates the shortest path to the Root Bridge.
+
+The path with the **lowest cost** becomes the preferred path.
+
+---
+
+## Step 3 – Port Roles
+
+STP assigns different roles to switch ports.
+
+### Root Port (RP)
+
+- One Root Port on every non-root switch.
+- Provides the shortest path to the Root Bridge.
+
+---
+
+### Designated Port (DP)
+
+- One Designated Port on every network segment.
+- Forwards traffic toward that segment.
+
+---
+
+### Blocking Port
+
+Ports that could create loops are placed into the Blocking State.
+
+These ports do not forward normal data traffic.
+
+---
+
+# Port States (Classic STP)
+
+A switch port passes through several states.
+
+| State | Purpose |
+|--------|---------|
+| Blocking | Prevents loops and does not forward frames |
+| Listening | Learns network topology |
+| Learning | Learns MAC Addresses but does not forward data |
+| Forwarding | Normal traffic forwarding |
+| Disabled | Port is administratively down |
+
+---
+
+# BPDU (Bridge Protocol Data Unit)
+
+Switches exchange special messages called **BPDUs**.
+
+BPDUs help switches:
+
+- Elect the Root Bridge
+- Detect loops
+- Exchange topology information
+- Recalculate paths after failures
+
+---
+
+# Link Failure Example
+
+Initial Topology
+
+```
+Switch A
+ /      \
+B        C
+ \      /
+```
+
+One link is blocked by STP.
+
+If the active link fails:
+
+```
+Link Failure
+      ↓
+STP Recalculates
+      ↓
+Blocked Link Becomes Active
+```
+
+The network continues to operate without manual intervention.
+
+---
+
+# Advantages of STP
+
+- Prevents Layer 2 loops
+- Eliminates broadcast storms
+- Prevents duplicate frames
+- Stabilizes MAC Address Tables
+- Supports redundant network design
+- Improves network reliability
+
+---
+
+# STP vs No STP
+
+| Without STP | With STP |
+|--------------|----------|
+| Network Loops | Loop-Free Network |
+| Broadcast Storms | Controlled Traffic |
+| Duplicate Frames | No Duplicate Frames |
+| MAC Table Instability | Stable MAC Table |
+| Network Failure | Reliable Redundancy |
+
+---
+
+# Key Takeaways
+
+- STP works at Layer 2.
+- It prevents switching loops.
+- It elects one Root Bridge.
+- Redundant links are blocked instead of removed.
+- If an active link fails, a blocked link automatically becomes active.
+- Switches exchange BPDUs to build and maintain the spanning tree.
+
+---
+
+# Summary
+
+Spanning Tree Protocol (STP) is a Layer 2 protocol that prevents switching loops in Ethernet networks. It creates a loop-free topology by electing a Root Bridge, selecting the best paths, and blocking redundant links while keeping them available as backup paths.
