@@ -2441,3 +2441,288 @@ Understanding Collision and Broadcast Domains helps in:
 # Summary
 
 Collision Domains and Broadcast Domains are fundamental networking concepts used to manage network traffic efficiently. Modern switches reduce collisions by creating separate Collision Domains, while routers and VLANs control broadcast traffic by dividing networks into multiple Broadcast Domains.
+
+# IP Addressing & Subnetting
+
+## Introduction
+
+An **IP Address (Internet Protocol Address)** is a unique logical address assigned to every device connected to a network.
+
+Just as a house has a postal address for receiving letters, every device on a network needs an IP Address to send and receive data.
+
+IP Addresses operate at **Layer 3 (Network Layer)** of the OSI Model.
+
+---
+
+# Why Do We Need an IP Address?
+
+Imagine sending a message to your friend.
+
+Without knowing your friend's address, the message cannot be delivered.
+
+Similarly, routers use IP Addresses to identify the source and destination devices and forward packets correctly.
+
+---
+
+# What is an IP Address?
+
+An IP Address is a numerical address assigned to a device.
+
+Example:
+
+```
+192.168.1.10
+```
+
+Every device connected to a network should have a unique IP Address.
+
+Examples:
+
+- Computer
+- Laptop
+- Mobile Phone
+- Server
+- Printer
+- Router
+
+---
+
+# Types of IP Addresses
+
+## 1. IPv4
+
+IPv4 is the most widely used version of IP.
+
+Example:
+
+```
+192.168.1.10
+```
+
+Features:
+
+- 32-bit Address
+- Four Octets
+- Written in Decimal
+
+Example:
+
+```
+192.168.1.10
+
+192 | 168 | 1 | 10
+```
+
+---
+
+## 2. IPv6
+
+IPv6 was introduced because IPv4 addresses are limited.
+
+Example:
+
+```
+2001:db8::1
+```
+
+Features:
+
+- 128-bit Address
+- Much larger address space
+- Better scalability
+
+---
+
+# Public IP vs Private IP
+
+## Private IP
+
+Used inside local networks.
+
+Ranges:
+
+```
+10.0.0.0 – 10.255.255.255
+
+172.16.0.0 – 172.31.255.255
+
+192.168.0.0 – 192.168.255.255
+```
+
+Private IPs cannot be accessed directly from the Internet.
+
+---
+
+## Public IP
+
+Assigned by an Internet Service Provider (ISP).
+
+Public IPs are globally unique and accessible over the Internet.
+
+---
+
+# Static IP vs Dynamic IP
+
+## Static IP
+
+- Fixed Address
+- Does not change
+- Used for Servers
+
+---
+
+## Dynamic IP
+
+- Assigned automatically by DHCP
+- Can change over time
+- Common for Home Networks
+
+---
+
+# Network ID and Host ID
+
+Every IPv4 address consists of two parts:
+
+```
+Network ID | Host ID
+```
+
+Example:
+
+```
+192.168.1.25/24
+```
+
+Network:
+
+```
+192.168.1.0
+```
+
+Host:
+
+```
+25
+```
+
+The Network ID identifies the network, while the Host ID identifies a specific device.
+
+---
+
+# What is a Subnet?
+
+A **Subnet (Subnetwork)** is a smaller network created by dividing a larger network into multiple smaller networks.
+
+Subnetting helps:
+
+- Reduce Broadcast Traffic
+- Improve Performance
+- Increase Security
+- Better Network Management
+
+---
+
+# Example
+
+Without Subnetting:
+
+```
+192.168.1.0/24
+
+All devices belong to one network.
+```
+
+With Subnetting:
+
+```
+192.168.1.0/26
+
+192.168.1.64/26
+
+192.168.1.128/26
+
+192.168.1.192/26
+```
+
+Now one large network becomes four smaller networks.
+
+---
+
+# What is a Subnet Mask?
+
+A **Subnet Mask** tells the device which part of the IP Address represents the Network ID and which part represents the Host ID.
+
+Example:
+
+```
+IP Address
+
+192.168.1.20
+
+Subnet Mask
+
+255.255.255.0
+```
+
+CIDR notation:
+
+```
+/24
+```
+
+---
+
+# CIDR Notation
+
+CIDR (Classless Inter-Domain Routing) is a shorter way to represent a subnet mask.
+
+Examples:
+
+| CIDR | Subnet Mask |
+|------|-------------|
+| /8 | 255.0.0.0 |
+| /16 | 255.255.0.0 |
+| /24 | 255.255.255.0 |
+| /30 | 255.255.255.252 |
+
+---
+
+# Why is Subnetting Important?
+
+Subnetting helps to:
+
+- Reduce Broadcast Domains
+- Improve Network Performance
+- Increase Security
+- Efficiently Use IP Addresses
+- Simplify Network Management
+
+---
+
+# IP Address vs MAC Address
+
+| IP Address | MAC Address |
+|------------|-------------|
+| Logical Address | Physical Address |
+| Layer 3 | Layer 2 |
+| Can Change | Usually Permanent |
+| Used by Routers | Used by Switches |
+
+---
+
+# Key Takeaways
+
+- Every network device needs an IP Address.
+- IP Address works at Layer 3.
+- IPv4 uses 32 bits.
+- IPv6 uses 128 bits.
+- Private IPs are used inside local networks.
+- Public IPs are used on the Internet.
+- Subnetting divides a large network into smaller networks.
+- CIDR notation is a shorter way to represent subnet masks.
+
+---
+
+# Summary
+
+IP Addressing allows devices to communicate across networks by assigning unique logical addresses. Subnetting divides large networks into smaller and more efficient networks, improving performance, security, and IP address utilization.
