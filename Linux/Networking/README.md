@@ -2204,3 +2204,240 @@ Native VLAN = VLAN 1
 # Summary
 
 A VLAN allows multiple logical networks to exist on a single physical switch, improving security and reducing unnecessary broadcast traffic. IEEE 802.1Q tagging enables multiple VLANs to travel across a single trunk link by adding VLAN identification information to Ethernet Frames.
+
+# Collision Domain & Broadcast Domain
+
+## Introduction
+
+In computer networks, data is transmitted between devices using Ethernet.
+
+When multiple devices communicate at the same time, network traffic must be managed properly to avoid communication problems.
+
+Two important concepts used to understand network traffic are:
+
+- Collision Domain
+- Broadcast Domain
+
+Understanding these concepts helps in designing efficient and scalable networks.
+
+---
+
+# What is a Collision Domain?
+
+A **Collision Domain** is a part of the network where two or more devices can attempt to send data at the same time, causing a **collision**.
+
+A collision happens when multiple devices transmit data simultaneously on the same communication channel.
+
+Example:
+
+```
+PC1
+   \
+    \
+     Hub
+    / | \
+PC2  |  PC3
+```
+
+If PC1 and PC2 send data at the same time, the signals collide.
+
+This results in:
+
+- Data corruption
+- Retransmission
+- Reduced network performance
+
+---
+
+# Why Do Collisions Occur?
+
+Collisions mainly occur in **Half-Duplex Ethernet** where devices share the same communication medium.
+
+Modern switched networks using **Full-Duplex** communication eliminate collisions.
+
+---
+
+# Hub and Collision Domain
+
+A Hub does not understand MAC Addresses.
+
+It simply copies incoming data to every connected port.
+
+```
+      Hub
+
+PC1  PC2  PC3
+```
+
+All connected devices share **one Collision Domain**.
+
+---
+
+# Switch and Collision Domain
+
+A Switch creates a separate Collision Domain for every port.
+
+```
+        Switch
+
+PC1   PC2   PC3
+```
+
+Each device communicates independently.
+
+Result:
+
+- No collisions
+- Better performance
+- Higher bandwidth
+
+---
+
+# Collision Domain Comparison
+
+| Device | Collision Domains |
+|----------|------------------|
+| Hub | One |
+| Switch | One per Port |
+
+---
+
+# What is a Broadcast Domain?
+
+A **Broadcast Domain** is the group of devices that receive a broadcast message.
+
+A broadcast frame is sent to **every device** within the same broadcast domain.
+
+Broadcast MAC Address:
+
+```
+FF:FF:FF:FF:FF:FF
+```
+
+---
+
+# Example
+
+```
+       Switch
+
+PC1
+PC2
+PC3
+PC4
+```
+
+If PC1 sends a broadcast frame:
+
+```
+PC1
+ │
+ ▼
+Switch
+ │
+ ├──► PC2
+ ├──► PC3
+ └──► PC4
+```
+
+Every device receives the broadcast.
+
+---
+
+# Router and Broadcast Domain
+
+A Router does **not forward broadcast traffic** between different networks.
+
+Example:
+
+```
+LAN 1
+ PC1
+ PC2
+   │
+ Router
+   │
+ PC3
+ PC4
+LAN 2
+```
+
+Broadcast from LAN 1 will **not** reach LAN 2.
+
+Each side is a separate Broadcast Domain.
+
+---
+
+# VLAN and Broadcast Domain
+
+Each VLAN creates its own Broadcast Domain.
+
+Example:
+
+```
+Switch
+
+VLAN 10
+PC1
+PC2
+
+------------
+
+VLAN 20
+PC3
+PC4
+```
+
+Broadcast generated in VLAN 10 stays only inside VLAN 10.
+
+It does not reach VLAN 20.
+
+---
+
+# Collision Domain vs Broadcast Domain
+
+| Collision Domain | Broadcast Domain |
+|------------------|------------------|
+| Data Collision Area | Broadcast Traffic Area |
+| Controlled by Switch | Controlled by Router or VLAN |
+| Affects Performance | Affects Network Size |
+| One per Switch Port | One per Network/VLAN |
+
+---
+
+# Hub vs Switch vs Router
+
+| Device | Collision Domain | Broadcast Domain |
+|----------|------------------|------------------|
+| Hub | One | One |
+| Switch | One per Port | One |
+| Router | One per Interface | One per Interface |
+
+---
+
+# Why Are These Concepts Important?
+
+Understanding Collision and Broadcast Domains helps in:
+
+- Improving network performance
+- Reducing unnecessary traffic
+- Better network segmentation
+- Efficient troubleshooting
+- Designing scalable enterprise networks
+
+---
+
+# Key Takeaways
+
+- A Collision Domain is where data collisions can occur.
+- A Broadcast Domain is where broadcast traffic is received.
+- Hubs create a single Collision Domain.
+- Switches create one Collision Domain per port.
+- Routers separate Broadcast Domains.
+- Each VLAN forms a separate Broadcast Domain.
+
+---
+
+# Summary
+
+Collision Domains and Broadcast Domains are fundamental networking concepts used to manage network traffic efficiently. Modern switches reduce collisions by creating separate Collision Domains, while routers and VLANs control broadcast traffic by dividing networks into multiple Broadcast Domains.
