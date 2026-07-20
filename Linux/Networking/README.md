@@ -1900,3 +1900,307 @@ The network continues to operate without manual intervention.
 # Summary
 
 Spanning Tree Protocol (STP) is a Layer 2 protocol that prevents switching loops in Ethernet networks. It creates a loop-free topology by electing a Root Bridge, selecting the best paths, and blocking redundant links while keeping them available as backup paths.
+
+# VLANs & IEEE 802.1Q Tagging
+
+## Introduction
+
+A **VLAN (Virtual Local Area Network)** is a logical division of a physical network.
+
+Instead of connecting devices using separate switches, VLANs allow multiple logical networks to exist on the same physical switch.
+
+This improves security, performance, and network management.
+
+---
+
+# Why Do We Need VLANs?
+
+Imagine a company with three departments:
+
+- HR
+- Finance
+- IT
+
+Without VLANs:
+
+```
+        Switch
+
+PC1 (HR)
+PC2 (Finance)
+PC3 (IT)
+PC4 (HR)
+PC5 (IT)
+```
+
+All devices belong to the same network.
+
+Problems:
+
+- Everyone receives broadcast traffic.
+- Lower security.
+- Higher network congestion.
+- Difficult management.
+
+---
+
+# Solution: VLAN
+
+Using VLANs, the same switch can be divided into multiple logical networks.
+
+```
+            Switch
+
+VLAN 10 → HR
+
+PC1
+PC4
+
+------------------
+
+VLAN 20 → Finance
+
+PC2
+
+------------------
+
+VLAN 30 → IT
+
+PC3
+PC5
+```
+
+Now each department works like a separate network.
+
+---
+
+# What is a VLAN?
+
+A VLAN groups devices logically instead of physically.
+
+Devices in the same VLAN can communicate directly.
+
+Devices in different VLANs cannot communicate unless routing is configured.
+
+---
+
+# Benefits of VLANs
+
+- Better Security
+- Reduced Broadcast Traffic
+- Easier Network Management
+- Improved Performance
+- Logical Network Separation
+- Easy Department Management
+
+---
+
+# VLAN ID
+
+Each VLAN has a unique number.
+
+Examples:
+
+| VLAN ID | Department |
+|----------|------------|
+| 10 | HR |
+| 20 | Finance |
+| 30 | IT |
+| 100 | Guest |
+
+Valid VLAN IDs:
+
+```
+1 – 4094
+```
+
+---
+
+# Broadcast Domain
+
+Each VLAN creates a separate **Broadcast Domain**.
+
+Example:
+
+```
+VLAN 10
+
+PC1 ---- PC2 ---- PC3
+
+Broadcast stays only inside VLAN 10.
+```
+
+Broadcast traffic does not enter VLAN 20 or VLAN 30.
+
+---
+
+# Communication Between VLANs
+
+Suppose:
+
+```
+PC1 → VLAN 10
+
+PC2 → VLAN 20
+```
+
+They **cannot communicate directly**.
+
+To communicate between VLANs, a **Router** or a **Layer 3 Switch** is required.
+
+This process is called:
+
+**Inter-VLAN Routing**
+
+---
+
+# Access Port
+
+An **Access Port** carries traffic for **only one VLAN**.
+
+Example:
+
+```
+PC
+ │
+ │
+Access Port
+ │
+Switch
+```
+
+Used for:
+
+- PCs
+- Printers
+- IP Phones
+- Servers
+
+---
+
+# Trunk Port
+
+A **Trunk Port** carries traffic for **multiple VLANs** simultaneously.
+
+Usually used between:
+
+- Switch ↔ Switch
+- Switch ↔ Router
+- Switch ↔ Layer 3 Switch
+
+Example:
+
+```
+Switch A
+    │
+Trunk Port
+    │
+Switch B
+```
+
+---
+
+# Why Do We Need Trunk Ports?
+
+Suppose Switch A and Switch B both contain:
+
+- VLAN 10
+- VLAN 20
+- VLAN 30
+
+Instead of using three separate cables, one trunk cable can carry traffic for all VLANs.
+
+---
+
+# IEEE 802.1Q Tagging
+
+When multiple VLANs share the same trunk link, the receiving switch must know which VLAN each frame belongs to.
+
+IEEE **802.1Q** solves this problem.
+
+It inserts a small VLAN Tag into the Ethernet Frame.
+
+---
+
+# VLAN Tag
+
+Normal Ethernet Frame
+
+```
+Destination MAC
+Source MAC
+Type
+Data
+FCS
+```
+
+Tagged Ethernet Frame
+
+```
+Destination MAC
+Source MAC
+
+VLAN Tag (802.1Q)
+
+Type
+Data
+FCS
+```
+
+The VLAN Tag contains the VLAN ID.
+
+---
+
+# Native VLAN
+
+On a trunk port, one VLAN is called the **Native VLAN**.
+
+Frames belonging to the Native VLAN are usually sent **without an 802.1Q tag**.
+
+By default:
+
+```
+Native VLAN = VLAN 1
+```
+
+(Administrators often change this for security reasons.)
+
+---
+
+# Access Port vs Trunk Port
+
+| Access Port | Trunk Port |
+|--------------|------------|
+| One VLAN | Multiple VLANs |
+| Connected to End Devices | Connected to Network Devices |
+| No VLAN Tag | Uses 802.1Q Tags |
+| Simple Configuration | Advanced Configuration |
+
+---
+
+# VLAN Advantages
+
+- Better Security
+- Smaller Broadcast Domains
+- Higher Performance
+- Easier Administration
+- Flexible Network Design
+- Efficient Resource Utilization
+
+---
+
+# Key Takeaways
+
+- VLAN divides one physical network into multiple logical networks.
+- Each VLAN is a separate Broadcast Domain.
+- Devices in different VLANs cannot communicate directly.
+- Access Ports carry one VLAN.
+- Trunk Ports carry multiple VLANs.
+- IEEE 802.1Q adds VLAN Tags to Ethernet Frames.
+- Inter-VLAN communication requires a Router or Layer 3 Switch.
+
+---
+
+# Summary
+
+A VLAN allows multiple logical networks to exist on a single physical switch, improving security and reducing unnecessary broadcast traffic. IEEE 802.1Q tagging enables multiple VLANs to travel across a single trunk link by adding VLAN identification information to Ethernet Frames.
