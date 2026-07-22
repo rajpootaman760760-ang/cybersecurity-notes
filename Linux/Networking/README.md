@@ -2726,3 +2726,267 @@ Subnetting helps to:
 # Summary
 
 IP Addressing allows devices to communicate across networks by assigning unique logical addresses. Subnetting divides large networks into smaller and more efficient networks, improving performance, security, and IP address utilization.
+
+# IP Header Fields
+
+## Introduction
+
+Whenever data travels across different networks, it is encapsulated into an **IP Packet**.
+
+Every IP Packet contains two parts:
+
+- IP Header
+- Payload (Actual Data)
+
+The **IP Header** contains important information that helps routers deliver packets to the correct destination.
+
+---
+
+# Structure of an IPv4 Header
+
+```
+
++------------------------------------------------+
+| Version | IHL | DSCP | Total Length |
++------------------------------------------------+
+| Identification | Flags | Fragment Offset |
++------------------------------------------------+
+| TTL | Protocol | Header Checksum |
++------------------------------------------------+
+| Source IP Address |
++------------------------------------------------+
+| Destination IP Address |
++------------------------------------------------+
+| Options (Optional) |
++------------------------------------------------+
+| Data (Payload) |
++------------------------------------------------+
+
+```
+
+---
+
+# 1. Version
+
+Indicates which version of IP is being used.
+
+Example:
+
+- IPv4 → Version = 4
+- IPv6 → Version = 6
+
+---
+
+# 2. Internet Header Length (IHL)
+
+Specifies the size of the IP Header.
+
+Normally:
+
+```
+
+20 Bytes
+
+```
+
+If optional fields are added, the header becomes larger.
+
+---
+
+# 3. DSCP (Differentiated Services Code Point)
+
+Used for **Quality of Service (QoS)**.
+
+It allows important traffic, such as video calls or VoIP, to receive higher priority than normal traffic.
+
+---
+
+# 4. Total Length
+
+Indicates the total size of the IP Packet.
+
+It includes:
+
+- Header
+- Payload
+
+---
+
+# 5. Identification
+
+Each packet is assigned a unique identification number.
+
+If a large packet is divided into multiple fragments, this field helps the receiver identify which fragments belong together.
+
+---
+
+# 6. Flags
+
+Flags control packet fragmentation.
+
+The most common flags are:
+
+- Don't Fragment (DF)
+- More Fragments (MF)
+
+---
+
+# 7. Fragment Offset
+
+Indicates the position of a fragment within the original packet.
+
+The receiver uses this information to reassemble all fragments correctly.
+
+---
+
+# 8. Time To Live (TTL)
+
+TTL prevents packets from circulating forever in the network.
+
+Every router decreases the TTL value by **1**.
+
+If TTL becomes **0**, the router discards the packet.
+
+Example:
+
+```
+
+PC
+ ↓ TTL = 64
+
+Router 1
+ ↓ TTL = 63
+
+Router 2
+ ↓ TTL = 62
+
+```
+
+---
+
+# 9. Protocol
+
+This field tells the receiver which Layer 4 protocol is carried inside the IP Packet.
+
+Examples:
+
+| Value | Protocol |
+|--------|----------|
+| 1 | ICMP |
+| 6 | TCP |
+| 17 | UDP |
+
+---
+
+# 10. Header Checksum
+
+Used to detect errors in the IP Header.
+
+If the checksum is incorrect, the packet is discarded.
+
+---
+
+# 11. Source IP Address
+
+Contains the IP Address of the sender.
+
+Example:
+
+```
+
+192.168.1.10
+
+```
+
+---
+
+# 12. Destination IP Address
+
+Contains the IP Address of the receiver.
+
+Example:
+
+```
+
+8.8.8.8
+
+```
+
+Routers use this field to forward packets toward the destination.
+
+---
+
+# 13. Options (Optional)
+
+Rarely used.
+
+Can contain additional routing or diagnostic information.
+
+---
+
+# Payload
+
+The Payload contains the actual user data.
+
+Examples:
+
+- HTTP Data
+- HTTPS Data
+- DNS Query
+- Email
+- File Data
+
+---
+
+# Packet Flow Example
+
+```
+
+Application Data
+↓
+
+TCP Header
+
+↓
+
+IP Header
+
+↓
+
+Ethernet Header
+
+↓
+
+Transmission
+
+```
+
+The IP Header helps routers deliver the packet correctly.
+
+---
+
+# Why is the IP Header Important?
+
+Without the IP Header:
+
+- Routers cannot forward packets.
+- Devices cannot identify the sender or receiver.
+- TTL cannot prevent routing loops.
+- Fragmented packets cannot be reassembled.
+
+---
+
+# Key Takeaways
+
+- Every IPv4 packet contains an IP Header.
+- The IP Header controls routing and packet delivery.
+- Source and Destination IP Addresses identify the communicating devices.
+- TTL prevents packets from looping forever.
+- The Protocol field identifies TCP, UDP, ICMP, and other protocols.
+- Header Checksum detects errors in the header.
+
+---
+
+# Summary
+
+The IPv4 Header contains all the essential information required for packet delivery across networks. Routers read the header fields to determine where a packet should go, while the receiving device uses them to verify and process the packet correctly.
