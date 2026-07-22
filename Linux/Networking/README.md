@@ -2990,3 +2990,202 @@ Without the IP Header:
 # Summary
 
 The IPv4 Header contains all the essential information required for packet delivery across networks. Routers read the header fields to determine where a packet should go, while the receiving device uses them to verify and process the packet correctly.
+# IPv6 (Internet Protocol Version 6)
+
+## Introduction
+
+IPv6 (Internet Protocol Version 6) is the latest version of the Internet Protocol.
+
+It was developed to solve the problem of **IPv4 address exhaustion**, as the number of devices connected to the Internet continues to grow.
+
+IPv6 provides a much larger address space, better efficiency, and improved support for modern networks.
+
+---
+
+# Why Do We Need IPv6?
+
+IPv4 uses **32-bit addresses**, which can provide approximately **4.3 billion unique IP addresses**.
+
+With billions of devices such as smartphones, laptops, IoT devices, and servers, IPv4 addresses are no longer sufficient.
+
+IPv6 was introduced to overcome this limitation.
+
+---
+
+# IPv4 vs IPv6
+
+| Feature | IPv4 | IPv6 |
+|----------|------|------|
+| Address Size | 32-bit | 128-bit |
+| Format | Decimal | Hexadecimal |
+| Example | 192.168.1.1 | 2001:db8::1 |
+| Address Space | ~4.3 Billion | 340 Undecillion (Very Large) |
+| NAT Required | Usually Yes | Usually No |
+| Broadcast | Supported | Not Supported |
+
+---
+
+# IPv6 Address Format
+
+IPv6 addresses contain **128 bits** and are written in **8 groups** of hexadecimal numbers.
+
+Example:
+
+```
+2001:0db8:85a3:0000:0000:8a2e:0370:7334
+```
+
+Each group contains **4 hexadecimal digits**.
+
+---
+
+# Shortened IPv6 Address
+
+Leading zeros can be removed.
+
+Example:
+
+```
+2001:0db8:0000:0000:0000:0000:0000:0001
+
+↓
+
+2001:db8::1
+```
+
+The symbol `::` can replace one continuous sequence of zero groups.
+
+---
+
+# Types of IPv6 Addresses
+
+## 1. Unicast
+
+One sender communicates with one receiver.
+
+Example:
+
+```
+PC A → PC B
+```
+
+---
+
+## 2. Multicast
+
+One sender communicates with multiple selected devices.
+
+Example:
+
+```
+Server
+
+↓
+
+PC1
+PC2
+PC3
+```
+
+---
+
+## 3. Anycast
+
+Multiple devices share the same IPv6 address.
+
+The packet is delivered to the **nearest available device**.
+
+Used in:
+
+- DNS Servers
+- Cloud Services
+- CDNs
+
+---
+
+# IPv6 Does Not Use Broadcast
+
+Unlike IPv4, IPv6 does not support broadcast traffic.
+
+Instead, it uses **Multicast**, which is more efficient and reduces unnecessary network traffic.
+
+---
+
+# IPv6 Header
+
+Compared to IPv4, the IPv6 header is:
+
+- Simpler
+- Fixed size (40 Bytes)
+- Faster to process
+- More efficient for routers
+
+---
+
+# Advantages of IPv6
+
+- Huge address space
+- Better routing efficiency
+- Improved performance
+- Built-in support for IPsec
+- No broadcast traffic
+- Better support for IoT
+- Simplified header structure
+
+---
+
+# IPv6 Address Types
+
+| Type | Purpose |
+|------|---------|
+| Global Unicast | Public communication over the Internet |
+| Link-Local | Communication within the same local network |
+| Unique Local | Private communication inside an organization |
+| Multicast | One-to-many communication |
+| Anycast | One-to-nearest communication |
+
+---
+
+# IPv4 vs IPv6 Example
+
+IPv4:
+
+```
+192.168.1.10
+```
+
+IPv6:
+
+```
+2001:db8::10
+```
+
+Both identify a device, but IPv6 provides a much larger address space.
+
+---
+
+# Why is IPv6 Important?
+
+Modern technologies rely on IPv6 because:
+
+- The Internet is growing rapidly.
+- More devices require unique IP addresses.
+- It improves scalability.
+- It supports future networking needs.
+
+---
+
+# Key Takeaways
+
+- IPv6 is the successor to IPv4.
+- It uses 128-bit addresses.
+- Addresses are written in hexadecimal format.
+- IPv6 removes broadcast traffic.
+- It provides a significantly larger address space.
+- It is designed for modern Internet and cloud environments.
+
+---
+
+# Summary
+
+IPv6 is the next-generation Internet Protocol designed to replace IPv4. It provides a massive address space, improved routing efficiency, simplified packet processing, and better support for modern networking technologies, making it essential for the future of the Internet.
